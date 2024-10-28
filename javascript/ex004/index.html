@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div onclick="clicou()" onmouseenter="entrou()" onmouseout="saiu()">Clique aqui</div>
+    <script>
+        let div = document.querySelector('div');
+
+        function clicou() {
+            div.innerHTML= 'Clicou';
+            div.style.background = 'blue';
+        }
+
+        let entrou = () => {
+            div.innerHTML = 'Entrou';
+        }
+
+        let saiu = function () {
+            div.innerText = 'Saiu';
+            div.style.background = 'red';
+        }
+
+    </script>
+</body>
+</html>
