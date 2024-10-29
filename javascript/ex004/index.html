@@ -13,20 +13,23 @@
     </style>
 </head>
 <body>
-    <div onclick="clicou()" onmouseenter="entrou()" onmouseout="saiu()">Clique aqui</div>
+    <div>Clique aqui</div>
     <script>
         let div = document.querySelector('div');
+        div.addEventListener('click', clicou)
+        div.addEventListener('mouseenter', entrou)
+        div.addEventListener('mouseout', saiu)
 
         function clicou() {
-            div.innerHTML= 'Clicou';
+            div.innerText= 'Clicou';
             div.style.background = 'blue';
         }
 
-        let entrou = () => {
-            div.innerHTML = 'Entrou';
+        function entrou() {
+            div.innerText = 'Entrou';
         }
 
-        let saiu = function () {
+        function saiu() {
             div.innerText = 'Saiu';
             div.style.background = 'red';
         }
