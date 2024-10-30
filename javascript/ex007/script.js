@@ -12,6 +12,11 @@ function verificar() {
     let idade = ano - Number(anoNasc.value);
     let genero = sexo[0].checked ? 'h' : 'm';
     let faixaEtaria = verificarIdade(idade);
+
+    let imgExistente = document.querySelector('#imagem');
+    if (imgExistente) {
+        imgExistente.remove();
+    }
     
     let img = document.createElement('img');
     img.setAttribute('id', 'imagem');
