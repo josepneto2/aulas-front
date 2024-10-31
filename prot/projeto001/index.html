@@ -4,27 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>projeto 1</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu" />
     <link rel="stylesheet" href="estilos/style.css">
 </head>
-<body>
+<body onresize="mudouTamanhoTela()">
     <div class="estrutura">
         <header class="header">
-            header
+            <a href="#"><img id="logo" src="logo.png" alt="logo"></a>
         </header>
         <nav class="menu">
-            nav
-            <ul>
-                <li>opcao 1</li>
-                <li>opcao 2</li>
-                <li>opcao 3</li>
-                <li>opcao 4</li>
+            <span id="burguer" class="material-symbols-outlined">
+                menu
+            </span>
+            <ul id="lista-menu">
+                <li><a href="#">opcao 1</a></li>
+                <li><a href="#">opcao 2</a></li>
+                <li><a href="#">opcao 3</a></li>
+                <li><a href="#">opcao 4</a></li>
             </ul>
         </nav>
         <section class="section">
-            section
+            <div class="container">
+                container
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum ratione harum maiores vel temporibus nisi provident, rem tempora reprehenderit necessitatibus eum voluptates impedit, minus sed quae ex recusandae, itaque delectus.</p>
+                
+                
+               
+            </div>
         </section>
-        <footer class="footer">footer</footer>
+        <footer class="footer">
+            <div>
+                <p id="tel">Telefone:</p>
+                <p>(43) 9 8426-0880</p>
+                <p id="email">Email:</p>
+                <p>passagnolo1@gmail.com</p>
+            </div>
+            <div>
+                <p id="endereco">Endereço:</p>
+                <p>Rua Brasil, 233 - Centro - Cornélio Procópio/PR</p>
+            </div>
+        </footer>
     </div>
-    
+    <script src="script.js"></script>
 </body>
 </html>
