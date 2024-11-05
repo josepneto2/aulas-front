@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tabela</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 400px;
+            border: 2px solid blue;
+        }
+
+        tbody > tr:nth-child(odd) {
+            background-color: lightgray;
+        }
+
+        th {
+            border: 1px solid black;
+        }
+
+        td {
+            padding: 8px;
+            border: 1px solid black;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        table
+            table row(tr)
+                table header(th)
+                table data(td)
+    -->
+
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>nome</th>
+                <th>idade</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>neto</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>jose</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>joao</td>
+                <td>30</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="script.js"></script>
+</body>
+</html>
