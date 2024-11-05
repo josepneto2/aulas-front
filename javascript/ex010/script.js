@@ -1,10 +1,8 @@
-import User from './user.js';
+const usuario = {
+  nome: '',
+  senha: '',
+}
 
-const user = new User('neto', '1234');
-
-console.log(user.username)
-
-/*
 const loginForm = document.querySelector('#login-form');
 const btn = document.querySelector('#cadastrar');
 
@@ -13,10 +11,11 @@ function handleCadastrar(event) {
   event.preventDefault();
   const username = document.querySelector('#username');
   const password = document.querySelector('#password');
-  let usuario = new User(username.value, password.value);
+  usuario.nome = username.value; 
+  usuario.senha = password.value;
   console.log(usuario)
   
-  localStorage.setItem(usuario.username, JSON.stringify(usuario));
+  localStorage.setItem(usuario.nome, JSON.stringify(usuario));
   alert('Cadastro realizado com sucesso!')
   username.value = '';
   password.value = '';
@@ -31,5 +30,3 @@ function handleLogin(event) {
 }
 
 loginForm.addEventListener('submit', handleLogin)
-
-*/
