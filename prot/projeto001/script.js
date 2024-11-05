@@ -14,19 +14,25 @@ function clickMenu() {
 
 burguer.addEventListener('click', clickMenu);
 
-/* -------- lista visível ou não -------- */
+/* -------- altera;áo do conteúdo selecionado -------- */
 const opcoes = document.querySelectorAll('#lista-menu > li');
 const divsConteudo = document.querySelectorAll('.container > div');
 
 function handleClickOpcao(event) {
     const textoOpcao = event.target.innerText;
+
     divsConteudo.forEach((div) => {
-        if(div.id === event.target.innerText){
-            console.log(div.id)
-        }
-    })
+        div.classList.remove('ativo');
+        div.classList.add('inativo');
+    });
+
+    const divSelecionada = document.getElementById(textoOpcao);
+    if (divSelecionada) {
+        divSelecionada.classList.remove('inativo');
+        divSelecionada.classList.add('ativo');
+    }
 }
 
 opcoes.forEach((li) => {
     li.addEventListener('click', handleClickOpcao);
-})
+});
