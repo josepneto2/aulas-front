@@ -39,8 +39,7 @@ li {
     display: none;
 }
 
-#lista-menu a {
-    text-decoration: none;
+#lista-menu p {
     background-color: #36368d;
     display: block;
     text-align: center;
@@ -49,11 +48,11 @@ li {
     color: white;
 }
 
-#lista-menu a:hover {
+#lista-menu p:hover {
     background-color: #36368ddd;
 }
 
-#lista-menu a:active {
+#lista-menu p:active {
     background-color: #25255B;
 }
 
@@ -66,6 +65,14 @@ li {
     background-color: white;
     border-radius: 5px;
     box-shadow: 0px 0px 2px #36368d;
+}
+
+.container > .ativo {
+    display: block;
+}
+
+.container > .inativo {
+    display: none;
 }
 
 .footer {
