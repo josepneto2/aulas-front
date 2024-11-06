@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projeto 1</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu" />
+    <link rel="stylesheet" href="estilos/style.css">
+</head>
+<body onresize="mudouTamanhoTela()">
+    <div class="estrutura">
+        <header class="header">
+            <a href="#"><img id="logo" src="logo.png" alt="logo"></a>
+        </header>
+        <nav class="menu">
+            <span id="burguer" onclick="clickMenu()" class="material-symbols-outlined">
+                menu
+            </span>
+            <ul id="lista-menu">
+                <li><p>opcao1</p></li>
+                <li><p>opcao2</p></li>
+                <li><p>opcao3</p></li>
+                <li><p>opcao4</p></li>
+            </ul>
+        </nav>
+        <section class="section">
+            <div class="container">
+                <div class="ativo" id="opcao1">opcao1</div>
+                <div class="inativo" id="opcao2">opcao2</div>
+                <div class="inativo" id="opcao3">opcao3</div>
+                <div class="inativo" id="opcao4">opcao4</div>
+            </div>
+        </section>
+        <footer class="footer">
+            <div>
+                <p id="tel">Telefone:</p>
+                <p>(43) 9 8426-0880</p>
+                <p id="email">Email:</p>
+                <p>passagnolo1@gmail.com</p>
+            </div>
+            <div>
+                <p id="endereco">Endereço:</p>
+                <p>Rua Brasil, 233 - Centro - Cornélio Procópio/PR</p>
+            </div>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

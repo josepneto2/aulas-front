@@ -8,6 +8,96 @@ li {
     list-style-type: none;
 }
 
+/* ------- tela login ----------------------------------------- */
+.section-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #dcdcfe;
+    width: 400px;
+    height: 350px;
+    border-radius: 5px;
+    border: 1px solid #25255B;
+    font-size: 1.2em;
+}
+
+#titulo {
+    text-transform: uppercase ;
+    letter-spacing: 3px;
+    font-size: 2.5em;
+}
+
+#login-form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 100%;
+    height: 250px;
+}
+
+#login-form > input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #dcdcfe;
+}
+
+#login-form > #username {
+    margin-bottom: 10px;
+}
+
+.container-btn { 
+    margin-top: 20px;
+    text-align: center;
+}
+
+.btn { 
+    padding: 10px;
+    width: 130px;
+    border-radius: 5px;
+    background-color: #36368d;
+    text-align: center;
+    border: none;
+    padding: 8px;
+    color: white;
+    font-size: .9em;
+    letter-spacing: 1px;
+    font-weight: 500;
+
+}
+
+.btn:hover {
+    background-color: #36368ddd;
+    cursor: pointer;
+}
+
+.btn:active {
+    background-color: #25255B;
+}
+
+.btn:last-child { 
+    margin-left: 40px;
+}
+
+#aviso {
+    font-size: 0.8em;
+    color: red;
+    font-weight: 600;
+}
+
+.ativo {
+    display: block;
+}
+
+.inativo {
+    display: none;
+}
+
+
+/* ------- tela app ----------------------------------------- */
 .header {
     text-align: center;
     padding: 10px;
@@ -65,14 +155,6 @@ li {
     background-color: white;
     border-radius: 5px;
     box-shadow: 0px 0px 2px #36368d;
-}
-
-.container > .ativo {
-    display: block;
-}
-
-.container > .inativo {
-    display: none;
 }
 
 .footer {
