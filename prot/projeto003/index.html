@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema</title>
+    <link rel="stylesheet" href="estilos/style.css">
+</head>
+<body>
+    <section class="section-login">
+        <h1 id="titulo">Login</h1>
+        <form method="post" action="" id="login-form">
+            <label for="username">Usuário: </label>
+            <input 
+                type="text" 
+                name="username" 
+                id="username"
+                placeholder="Digite o nome de usuário"
+                required
+            />
+            <label for="password">Senha: </label>
+            <input 
+                type="password" 
+                name="password" 
+                id="password"
+                placeholder="Digite a senha"
+                required
+            />
+            <div class="container-btn">
+                <button class="btn" id="btn-login" onclick="realizarLogin(event)">Entrar</button>
+                <button class="btn" id="btn-cadastrar" onclick="realizarCadastro(event)">Cadastrar</button>
+            </div>
+        </form>
+        <p class="inativo" id="aviso">*Erro: Dados incorretos ou usuário inexistente</p>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
