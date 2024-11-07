@@ -1,20 +1,17 @@
+const usuarios = {
+    listaUsuarios: [],
+    listaClientes: []
+}
+
 const usuario = {
     nome: "",
     senha: "",
-    clientes: [
-        {
-            id: 100,
-            nome: "teste",
-            idade: 100
-        }
-    ]
 }
 
 const cliente = {
     id: 0,
     nome: "",
     idade: 0,
-    ativo: false
 }
 
 // ---------- TELA LOGIN ----------
@@ -25,15 +22,17 @@ const password = document.querySelector('#password');
 const aviso = document.querySelector('#aviso');
 
 function realizarLogin(event) {
-    const login = validarDados(username.value, password.value)
+    event.preventDefault()
+    const login = validarLogin(username.value, password.value)
     if(!login) {
-        event.preventDefault();
         username.style.border = '2px solid red';
         password.style.border = '2px solid red';
         aviso.classList.remove('inativo');
         console.log(login)
         return
     }
+
+    //window.location.href = "app.html"
 }
 
 function realizarCadastro(event) {
@@ -43,35 +42,50 @@ function realizarCadastro(event) {
     usuario.nome = username.value; 
     usuario.senha = password.value;
     
-    const usuarioJaCadastrado = obterDadosUsuario(usuario.nome);
-    if(usuarioJaCadastrado) {
-        username.style.border = '2px solid red'
-        aviso.classList.remove('inativo');
-        aviso.innerText = '*Erro: usuário já cadastrado';
-        console.log('já cadastrado', usuarioJaCadastrado)
-        return
+    // const usuarioJaCadastrado = obterDadosUsuario(usuario.nome);
+    // if(usuarioJaCadastrado) {
+    //     username.style.border = '2px solid red'
+    //     aviso.classList.remove('inativo');
+    //     aviso.innerText = '*Erro: usuário já cadastrado';
+    //     console.log('já cadastrado', usuarioJaCadastrado)
+    //     return
+    // }
+    const dadosUsuarios = localStorage.getItem('dadosSistema')
+    let usuariosObj;
+    if(!dadosUsuarios) {
+        usuarios.listaUsuarios.push(usuario)
+        usuariosObj = usuarios;
+    } else {
+        usuariosObj = JSON.parse(dadosUsuarios);
+        let listaUsuarios = usuariosObj.listaUsuarios;
+
+        listaUsuarios.push(usuario);
+        usuariosObj.listaUsuarios = listaUsuarios;
     }
     
-    localStorage.setItem(usuario.nome, JSON.stringify(usuario));
+    localStorage.setItem('dadosSistema', JSON.stringify(usuariosObj));
     alert('Cadastro realizado com sucesso!')
-    loginForm.submit();
-
+    window.location.href = "app.html"
 }
 
-const validarDados = (nome, senha) => {
-    const usuarioEncontrado = obterDadosUsuario(username.value)
-    if(!usuarioEncontrado){
+const validarLogin = (nome, senha) => {
+    const dados = obterDadosSistema()
+    if(!dados){
         return false
     }
+
+    const usuarioEncontrado = dados.listaUsuarios.find(usuario => usuario.nome === nome);
+    console.log(usuarioEncontrado)
+
     return usuarioEncontrado.nome === nome && usuarioEncontrado.senha === senha
 }
 
-function obterDadosUsuario(chave) {
-    const usuarioEncontrado = localStorage.getItem(chave)
-    if(!usuarioEncontrado){
+function obterDadosSistema() {
+    const dados = localStorage.getItem('dadosSistema')
+    if(!dados){
         return null
     } 
-    return JSON.parse(usuarioEncontrado);
+    return JSON.parse(dados);
 }
 
 // ---------- TELA APP ----------
