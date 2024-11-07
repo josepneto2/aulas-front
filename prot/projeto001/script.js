@@ -1,23 +1,22 @@
 const listaMenu = document.querySelector('#lista-menu');
 
-/* -------- lista visível ou não -------- */
+// -------- lista visível ou não -------- 
 function mudouTamanhoTela() {
     let tamhanhoTela = window.innerWidth >= 768 ? 'block' : 'none';
     listaMenu.style.display = tamhanhoTela;
 }
 
 function clickMenu() {
-    const burguer = document.querySelector('#burguer');
     let ativado = listaMenu.style.display == 'block' ? 'none' : 'block';
     listaMenu.style.display = ativado;
 }
 
-/* -------- altera;áo do conteúdo selecionado -------- */
+// -------- alteração do conteúdo selecionado -------- 
 const opcoes = document.querySelectorAll('#lista-menu > li');
 const divsConteudo = document.querySelectorAll('.container > div');
 
 function handleClickOpcao(event) {
-    const textoOpcao = event.target.innerText;
+    const textoOpcao = event.target.innerText.toLowerCase().split(' ')[0];
     
     divsConteudo.forEach((div) => {
         div.classList.remove('ativo');
@@ -35,63 +34,117 @@ opcoes.forEach((li) => {
     li.addEventListener('click', handleClickOpcao);
 });
 
-
-/* -------- tela login -------- */
+// -------- tela login -------- 
 const usuario = {
-    nome: '',
-    senha: '',
+    nome: "",
+    senha: "",
+    clientes: [
+        {
+            id: 100,
+            nome: "teste",
+            idade: 100
+        }
+    ]
 }
-  
+
+const cliente = {
+    id: 0,
+    nome: "",
+    idade: 0,
+    ativo: false
+}
+
 const loginForm = document.querySelector('#login-form');
 const username = document.querySelector('#username');
 const password = document.querySelector('#password');
 const btnCadastrar = document.querySelector('#cadastrar');
+const aviso = document.querySelector('#aviso');
 
+console.log('usuarioLogado', usuarioLogado)
 
 function handleCadastrar(event) {
     event.preventDefault();
     aviso.classList.add('inativo');
-
+    
     usuario.nome = username.value; 
     usuario.senha = password.value;
-    console.log(usuario)
-
+    
+    const usuarioJaCadastrado = obterDadosUsuario(usuario.nome);
+    if(usuarioJaCadastrado) {
+        username.style.border = '2px solid red'
+        aviso.classList.remove('inativo');
+        aviso.innerText = '*Erro: usuário já cadastrado';
+        console.log('já cadastrado', usuarioJaCadastrado)
+        return
+    }
+    
     localStorage.setItem(usuario.nome, JSON.stringify(usuario));
     alert('Cadastro realizado com sucesso!')
-    username.value = '';
-    password.value = '';
+    loginForm.submit();
+
 }
 
 btnCadastrar.addEventListener('click', handleCadastrar)
 
 function handleLogin(event) {
     const login = validarDados(username.value, password.value)
-    console.log('login', login)
-
+    
     if(!login) {
-        event.preventDefault()
-        username.style.border = '2px solid red'
-        password.style.border = '2px solid red'
-        const aviso = document.querySelector('#aviso');
+        event.preventDefault();
+        username.style.border = '2px solid red';
+        password.style.border = '2px solid red';
         aviso.classList.remove('inativo');
-        console.log('parou aqui')
         return
     }
 
-    //event.preventDefault()
-
-    const usuarioBruto = localStorage.getItem(username.value);
-    console.log(JSON.parse(usuarioBruto))
-    console.log('entrou')
+    const usuarioLogado = obterDadosUsuario(username.value);
+    app(usuarioLogado);
+    
 }
 
 loginForm.addEventListener('submit', handleLogin)
 
 const validarDados = (nome, senha) => {
-    const usuarioEncontrado = localStorage.getItem(username.value)
+    const usuarioEncontrado = obterDadosUsuario(username.value)
     if(!usuarioEncontrado){
         return false
     }
-    const dadosUsuario = JSON.parse(usuarioEncontrado);
-    return dadosUsuario.nome === nome && dadosUsuario.senha === senha
+    return usuarioEncontrado.nome === nome && usuarioEncontrado.senha === senha
 }
+
+function obterDadosUsuario(chave) {
+    const usuarioEncontrado = localStorage.getItem(chave)
+    if(!usuarioEncontrado){
+        return null
+    } 
+    return JSON.parse(usuarioEncontrado);
+}
+
+// -------- consultar clientes -------- 
+/*
+const clientes = usuarioLogado.clientes
+const tabela = document.querySelector('.tabela');
+const tbody = tabela.lastElementChild;
+
+console.log(clientes)
+
+function criarLinhas() {
+    clientes.forEach((cliente) => {
+        const tdId = document.createElement('td');
+        tdId.innerText = cliente.id;
+        const tdNome = document.createElement('td');
+        tdNome.innerText = cliente.nome;
+        const tdIdade = document.createElement('td');
+        tdIdade.innerText = cliente.idade;
+
+        const tr = document.createElement('tr');
+        tr.appendChild(tdId)
+        tr.appendChild(tdNome)
+        tr.appendChild(tdIdade)
+        tbody.appendChild(tr)
+    })
+}
+
+function cliquei() {
+    criarLinhas()
+}*/

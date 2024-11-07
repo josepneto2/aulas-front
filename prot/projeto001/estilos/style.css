@@ -16,7 +16,7 @@ li {
     margin: 20px auto;
     padding: 20px;
     background-color: #dcdcfe;
-    width: 400px;
+    max-width: 400px;
     height: 350px;
     border-radius: 5px;
     border: 1px solid #25255B;
@@ -152,9 +152,31 @@ li {
 }
 
 .container {
+    padding: 20px;
     background-color: white;
     border-radius: 5px;
     box-shadow: 0px 0px 2px #36368d;
+}
+
+.container .tabela {
+    border-collapse: collapse;
+    width: 400px;
+    border: 2px solid #25255B;
+}
+
+.tabela tbody > tr:nth-child(odd) {
+    background-color: lightgray;
+}
+
+.tabela th {
+    padding: 8px;
+    border: 1px solid black;
+}
+
+.tabela td {
+    padding: 8px;
+    border: 1px solid black;
+    text-align: center;
 }
 
 .footer {
