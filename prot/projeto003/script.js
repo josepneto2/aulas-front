@@ -42,17 +42,19 @@ function realizarCadastro(event) {
     usuario.nome = username.value; 
     usuario.senha = password.value;
     
-    // const usuarioJaCadastrado = obterDadosUsuario(usuario.nome);
-    // if(usuarioJaCadastrado) {
-    //     username.style.border = '2px solid red'
-    //     aviso.classList.remove('inativo');
-    //     aviso.innerText = '*Erro: usuário já cadastrado';
-    //     console.log('já cadastrado', usuarioJaCadastrado)
-    //     return
-    // }
-    const dadosUsuarios = localStorage.getItem('dadosSistema')
+    /* 
+    const dados = obterDadosSistema();
+    if(!dados) {
+        username.style.border = '2px solid red'
+        aviso.classList.remove('inativo');
+        aviso.innerText = '*Erro: usuário já cadastrado';
+        console.log('já cadastrado', usuarioJaCadastrado)
+        return
+    }*/
+
+    const dados = obterDadosSistema();
     let usuariosObj;
-    if(!dadosUsuarios) {
+    if(!dados) {
         usuarios.listaUsuarios.push(usuario)
         usuariosObj = usuarios;
     } else {
@@ -74,7 +76,7 @@ const validarLogin = (nome, senha) => {
         return false
     }
 
-    const usuarioEncontrado = dados.listaUsuarios.find(usuario => usuario.nome === nome);
+    const usuarioEncontrado = dados.listaUsuarios.find(u => u.nome === nome);
     console.log(usuarioEncontrado)
 
     return usuarioEncontrado.nome === nome && usuarioEncontrado.senha === senha
