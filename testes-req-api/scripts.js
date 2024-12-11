@@ -12,13 +12,14 @@ function buscarTodasPessoas() {
 }
 
 function buscarPessoa() {
-    fetch(`https://localhost:7136/api/Pessoas/1`)
+    const idPessoa = document.getElementById('idPessoa').value;
+
+    fetch(`https://localhost:7136/api/Pessoas/${idPessoa}`)
         .then(response => {
             if (!response.ok) {
-                return new Error('falhou a requisição');
+                throw new Error('Falha na requisição');
             }
-
-            return response.json()
+            return response.json();
         })
         .then(dados => console.log(dados))
         .catch(err => console.error(err));
@@ -33,30 +34,19 @@ const pessoa = {
     interesses: "",
     sentimentos: "",
     valores: "",
-    dataCadastro: "",
-    ativo: true,
+    dataCadastro: new Date().toISOString(),
+    ativo: true, 
     deletado: false
 };
-
-const config = {
-    method: 'POST', 
-    Headers: {
-        Accept: 'application.json',
-        'Content-Type': 'application/json'
-      },
-    body: JSON.stringify(pessoa),
-    mode: 'no-cors' 
-}
 
 function criarPessoa() {
     fetch('https://localhost:7136/api/Pessoas', {
         method: 'POST', 
-        Headers: {
+        headers: {
             Accept: 'application.json',
             'Content-Type': 'application/json'
           },
         body: JSON.stringify(pessoa),
-        Cache: 'default'
     })
         .then(response => {
             if (!response.ok) {
