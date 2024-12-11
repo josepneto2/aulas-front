@@ -1,28 +1,22 @@
-function buscarTodasPessoas() {
-    fetch('https://localhost:7136/api/Pessoas')
-        .then(response => {
-            if (!response.ok) {
-                return new Error('falhou a requisição');
-            }
-
-            return response.json()
-        })
-        .then(dados => console.log(dados))
+async function buscarTodasPessoas() {
+    const dados = await fetch('https://localhost:7136/api/Pessoas')
+        .then(response => response.json())
         .catch(err => console.error(err));
+
+    console.log(dados)
 }
 
-function buscarPessoa() {
+async function buscarPessoa() {
     const idPessoa = document.getElementById('idPessoa').value;
 
-    fetch(`https://localhost:7136/api/Pessoas/${idPessoa}`)
+    const dados = await fetch(`https://localhost:7136/api/Pessoas/${idPessoa}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Falha na requisição');
             }
             return response.json();
         })
-        .then(dados => console.log(dados))
-        .catch(err => console.error(err));
+        console.log(dados)
 }
 
 const pessoa = {
